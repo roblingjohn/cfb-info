@@ -1,15 +1,17 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./containers/Home";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route></Route>
+          <Route path="/">
+            <Home />
+          </Route>
         </Switch>
       </Router>
-      <h1>Hello world</h1>
     </div>
   );
 }
