@@ -1,13 +1,26 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class TeamTable extends Component {
   teamInfo = this.props.team;
 
   render() {
     return (
-      <tr>
+      <tr
+        style={{
+          backgroundColor: this.teamInfo.colors[0].hex,
+          color: this.teamInfo.colors[1].hex,
+        }}
+      >
         <td>
-          {this.teamInfo.school} {this.teamInfo.nickname}
+          <Link
+            style={{
+              color: this.teamInfo.colors[1].hex,
+            }}
+            to={`/team/${this.teamInfo.search_name}`}
+          >
+            {this.teamInfo.school} {this.teamInfo.nickname}
+          </Link>
         </td>
         <td>
           {this.teamInfo.city}, {this.teamInfo.state}
