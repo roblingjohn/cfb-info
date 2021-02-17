@@ -9,11 +9,19 @@ class ConferencePage extends Component {
 
   teams = sec;
 
+  eastDivisionTeams = this.teams.filter((team) =>
+    team.current_division.includes("East")
+  );
+
+  westDivisionTeams = this.teams.filter((team) =>
+    team.current_division.includes("West")
+  );
+
   render() {
     return (
       <div>
-        <h1>{this.props.match.params.conference}</h1>
-        <table>
+        <h1>Southeastern Conference</h1>
+        {/* <table>
           <tr>
             <th>Team</th>
             <th>Location</th>
@@ -21,6 +29,31 @@ class ConferencePage extends Component {
             <th>Stadium</th>
           </tr>
           {this.teams.map((team_entry) => (
+            <TeamTable team={team_entry} />
+          ))}
+        </table> */}
+
+<h2>East Division</h2>
+        <table>
+          <tr>
+            <th>Team</th>
+            <th>Location</th>
+            <th>Colors</th>
+            <th>Stadium</th>
+          </tr>
+          {this.eastDivisionTeams.map((team_entry) => (
+            <TeamTable team={team_entry} />
+          ))}
+        </table>
+<h2>West Division</h2>
+        <table>
+          <tr>
+            <th>Team</th>
+            <th>Location</th>
+            <th>Colors</th>
+            <th>Stadium</th>
+          </tr>
+          {this.westDivisionTeams.map((team_entry) => (
             <TeamTable team={team_entry} />
           ))}
         </table>
