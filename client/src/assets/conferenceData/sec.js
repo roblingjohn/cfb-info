@@ -4,6 +4,7 @@ export default {
   ref_name: "sec",
   teams: [
     {
+      search_name: "alabama",
       school: "Alabama",
       city: "Tuscaloosa",
       state: "Alabama",
@@ -19,6 +20,7 @@ export default {
       timezone: "C",
     },
     {
+      search_name: "arkansas",
       school: "Arkansas",
       city: "Fayetteville",
       state: "Arkansas",
@@ -38,6 +40,7 @@ export default {
       timezone: "C",
     },
     {
+      search_name: "auburn",
       school: "Auburn",
       city: "Auburn",
       state: "Alabama",
@@ -54,6 +57,7 @@ export default {
       timezone: "C",
     },
     {
+      search_name: "florida",
       school: "Florida",
       city: "Gainesville",
       state: "Florida",
@@ -70,6 +74,7 @@ export default {
       timezone: "E",
     },
     {
+      search_name: "georgia",
       school: "Georgia",
       city: "Athens",
       state: "Georgia",
@@ -86,6 +91,7 @@ export default {
       timezone: "E",
     },
     {
+      search_name: "kentucky",
       school: "Kentucky",
       city: "Lexington",
       state: "Kentucky",
@@ -102,6 +108,7 @@ export default {
       timezone: "E",
     },
     {
+      search_name: "lsu",
       school: "LSU",
       city: "Baton Rouge",
       state: "Louisiana",
@@ -118,6 +125,7 @@ export default {
       timezone: "C",
     },
     {
+      search_name: "olemiss",
       school: "Ole Miss",
       city: "Oxford",
       state: "Mississippi",
@@ -134,6 +142,7 @@ export default {
       timezone: "C",
     },
     {
+      search_name: "missst",
       school: "Mississippi State",
       city: "Starkville",
       state: "Mississippi",
@@ -150,6 +159,7 @@ export default {
       timezone: "C",
     },
     {
+      search_name: "missouri",
       school: "Missouri",
       city: "Columbia",
       state: "Missouri",
@@ -166,6 +176,7 @@ export default {
       timezone: "C",
     },
     {
+      search_name: "southcarolina",
       school: "South Carolina",
       city: "Columbia",
       state: "South Carolina",
@@ -182,6 +193,7 @@ export default {
       timezone: "E",
     },
     {
+      search_name: "tennessee",
       school: "Tennessee",
       city: "Knoxville",
       state: "Tennessee",
@@ -198,6 +210,7 @@ export default {
       timezone: "E",
     },
     {
+      search_name: "tamu",
       school: "Texas A&M",
       city: "College Station",
       state: "Texas",
@@ -214,6 +227,7 @@ export default {
       timezone: "C",
     },
     {
+      search_name: "vanderbilt",
       school: "Vanderbilt",
       city: "Nashville",
       state: "Tennessee",
