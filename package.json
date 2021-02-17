@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/roblingjohn/cfb-info/issues"
   },
-  "homepage": "https://github.com/roblingjohn/cfb-info#readme",
+  "homepage": "https://cfb-info.herokuapp.com/",
   "dependencies": {
     "concurrently": "^5.3.0",
     "cors": "^2.8.5",
