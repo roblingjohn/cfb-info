@@ -5,7 +5,7 @@ class TeamTable extends Component {
 
   render() {
     return (
-      <tr>
+      <tr style={{backgroundColor:this.teamInfo.colors[0].hex, color:this.teamInfo.colors[1].hex}}>
         <td>
           {this.teamInfo.school} {this.teamInfo.nickname}
         </td>
