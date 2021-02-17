@@ -7,7 +7,9 @@ class ConferencePage extends Component {
     console.log(this.props.location);
   }
 
-  teams = sec;
+  conferenceInfo = sec
+
+  teams = sec.teams;
 
   eastDivisionTeams = this.teams.filter((team) =>
     team.current_division.includes("East")
@@ -20,7 +22,7 @@ class ConferencePage extends Component {
   render() {
     return (
       <div>
-        <h1>Southeastern Conference</h1>
+        <h1>{this.conferenceInfo.full_name}</h1>
         {/* <table>
           <tr>
             <th>Team</th>
