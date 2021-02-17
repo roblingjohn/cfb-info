@@ -13,3 +13,7 @@ table {
   margin: auto;
   margin-bottom: 20px;
 }
+
+li {
+  list-style: none;
+}

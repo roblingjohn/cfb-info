@@ -3,9 +3,9 @@ import TeamTable from "../components/TeamTable";
 import sec from "../assets/conferenceData/sec";
 
 class ConferencePage extends Component {
-  componentDidMount() {
-    console.log(this.props.location);
-  }
+//   componentDidMount() {
+//     console.log(this.props.location);
+//   }
 
   conferenceInfo = sec
 
