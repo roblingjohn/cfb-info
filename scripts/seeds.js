@@ -1,0 +1,263 @@
+const mongoose = require("mongoose");
+const db = require("../models");
+// const moment = require("moment-timezone");
+
+// moment.tz.setDefault("America/New_York");
+
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost:27017/cfb-info",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
+const teamSeeds = [{
+  search_name: "alabama",
+  school: "Alabama",
+  city: "Tuscaloosa",
+  state: "Alabama",
+  aliases: ["Bama"],
+  nickname: "Crimson Tide",
+  colors: [
+    { color_name: "Crimson", hex: "#9e1b32" },
+    { color_name: "White", hex: "#FFFFFF" },
+    { color_name: "Gray", hex: "#828a8f" },
+  ],
+  current_division: "West",
+  current_home_stadium: "Bryant-Denny Stadium",
+  timezone: "C",
+},
+{
+  search_name: "arkansas",
+  school: "Arkansas",
+  city: "Fayetteville",
+  state: "Arkansas",
+  nickname: "Razorbacks",
+  colors: [
+    { color_name: "Cardinal", hex: "#9D2235" },
+    { color_name: "White", hex: "#FFFFFF" },
+  ],
+  current_division: "West",
+  current_home_stadium: "Donald W. Reynolds Razorback Stadium",
+  current_alt_stadiums: [
+    {
+      stadium_name: "War Memorial Stadium",
+      location: { city: "Little Rock", state: "Arkansas" },
+    },
+  ],
+  timezone: "C",
+},
+{
+  search_name: "auburn",
+  school: "Auburn",
+  city: "Auburn",
+  state: "Alabama",
+  aliases: [],
+  nickname: "Tigers",
+  colors: [
+    { color_name: "Orange", hex: "#E87722" },
+    { color_name: "Blue", hex: "#0C2340" },
+    { color_name: "", hex: "" },
+  ],
+  current_division: "West",
+  current_home_stadium: "Jordan-Hare Stadium",
+  current_alt_stadiums: [],
+  timezone: "C",
+},
+{
+  search_name: "florida",
+  school: "Florida",
+  city: "Gainesville",
+  state: "Florida",
+  aliases: ["UF"],
+  nickname: "Gators",
+  colors: [
+    { color_name: "Orange", hex: "#FA4616" },
+    { color_name: "Blue", hex: "#0021A5" },
+    { color_name: "", hex: "" },
+  ],
+  current_division: "East",
+  current_home_stadium: "Ben Hill Griffin Stadium",
+  current_alt_stadiums: [],
+  timezone: "E",
+},
+{
+  search_name: "georgia",
+  school: "Georgia",
+  city: "Athens",
+  state: "Georgia",
+  aliases: ["UGA"],
+  nickname: "Bulldogs",
+  colors: [
+    { color_name: "Red", hex: "#BA0C2F" },
+    { color_name: "Black", hex: "#000000" },
+    { color_name: "Silver", hex: "" },
+  ],
+  current_division: "East",
+  current_home_stadium: "Sanford Stadium",
+  current_alt_stadiums: [],
+  timezone: "E",
+},
+{
+  search_name: "kentucky",
+  school: "Kentucky",
+  city: "Lexington",
+  state: "Kentucky",
+  aliases: ["UK"],
+  nickname: "Wildcats",
+  colors: [
+    { color_name: "Blue", hex: "#0033a0" },
+    { color_name: "White", hex: "#FFFFFF" },
+    { color_name: "", hex: "" },
+  ],
+  current_division: "East",
+  current_home_stadium: "Kroger Field",
+  current_alt_stadiums: [],
+  timezone: "E",
+},
+{
+  search_name: "lsu",
+  school: "LSU",
+  city: "Baton Rouge",
+  state: "Louisiana",
+  aliases: ["Louisiana State", "Louisiana State University"],
+  nickname: "Tigers",
+  colors: [
+    { color_name: "Purple", hex: "#461D7C" },
+    { color_name: "Gold", hex: "#FDD023" },
+    { color_name: "", hex: "" },
+  ],
+  current_division: "West",
+  current_home_stadium: "Tiger Stadium",
+  current_alt_stadiums: [],
+  timezone: "C",
+},
+{
+  search_name: "olemiss",
+  school: "Ole Miss",
+  city: "Oxford",
+  state: "Mississippi",
+  aliases: ["Mississippi"],
+  nickname: "Rebels",
+  colors: [
+    { color_name: "Red", hex: "#CE1126" },
+    { color_name: "Navy Blue", hex: "#14213D" },
+    { color_name: "Powder Blue", hex: "#006BA6" },
+  ],
+  current_division: "West",
+  current_home_stadium: "Vaught–Hemingway Stadium",
+  current_alt_stadiums: [],
+  timezone: "C",
+},
+{
+  search_name: "missst",
+  school: "Mississippi State",
+  city: "Starkville",
+  state: "Mississippi",
+  aliases: ["MSU"],
+  nickname: "Bulldogs",
+  colors: [
+    { color_name: "Maroon", hex: "#660000" },
+    { color_name: "White", hex: "#ffffff" },
+    { color_name: "Gray", hex: "#CCCCCC" },
+  ],
+  current_division: "West",
+  current_home_stadium: "Davis Wade Stadium",
+  current_alt_stadiums: [],
+  timezone: "C",
+},
+{
+  search_name: "missouri",
+  school: "Missouri",
+  city: "Columbia",
+  state: "Missouri",
+  aliases: ["Mizzou"],
+  nickname: "Tigers",
+  colors: [
+    { color_name: "Gold", hex: "#F1B82D" },
+    { color_name: "Black", hex: "#000000" },
+    { color_name: "", hex: "" },
+  ],
+  current_division: "East",
+  current_home_stadium: "Faurot Field",
+  current_alt_stadiums: [],
+  timezone: "C",
+},
+{
+  search_name: "southcarolina",
+  school: "South Carolina",
+  city: "Columbia",
+  state: "South Carolina",
+  aliases: ["USC", "SC", "Carolina"],
+  nickname: "Gamecocks",
+  colors: [
+    { color_name: "Garnet", hex: "#73000A" },
+    { color_name: "Black", hex: "#000000" },
+    { color_name: "", hex: "" },
+  ],
+  current_division: "East",
+  current_home_stadium: "Williams-Brice Stadium",
+  current_alt_stadiums: [],
+  timezone: "E",
+},
+{
+  search_name: "tennessee",
+  school: "Tennessee",
+  city: "Knoxville",
+  state: "Tennessee",
+  aliases: ["UT"],
+  nickname: "Volunteers",
+  colors: [
+    { color_name: "Orange", hex: "#FF8200" },
+    { color_name: "White", hex: "#FFFFFF" },
+    { color_name: "Gray", hex: "#58595b" },
+  ],
+  current_division: "East",
+  current_home_stadium: "Neyland Stadium",
+  current_alt_stadiums: [],
+  timezone: "E",
+},
+{
+  search_name: "tamu",
+  school: "Texas A&M",
+  city: "College Station",
+  state: "Texas",
+  aliases: ["A&M", "TAMU"],
+  nickname: "Aggies",
+  colors: [
+    { color_name: "Maroon", hex: "#500000" },
+    { color_name: "White", hex: "#FFFFFF" },
+    { color_name: "", hex: "" },
+  ],
+  current_division: "West",
+  current_home_stadium: "Kyle Field",
+  current_alt_stadiums: [],
+  timezone: "C",
+},
+{
+  search_name: "vanderbilt",
+  school: "Vanderbilt",
+  city: "Nashville",
+  state: "Tennessee",
+  aliases: ["Vandy"],
+  nickname: "Commodores",
+  colors: [
+    { color_name: "Black", hex: "#000000" },
+    { color_name: "Gold", hex: "#866d4b" },
+    { color_name: "", hex: "" },
+  ],
+  current_division: "East",
+  current_home_stadium: "Vanderbilt Stadium",
+  current_alt_stadiums: [],
+  timezone: "C",
+},];
+db.Team.remove({})
+  .then(() => db.Team.collection.insertMany(teamSeeds))
+  .then((data) => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
