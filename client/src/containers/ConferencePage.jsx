@@ -1,13 +1,21 @@
 import React, { Component } from "react";
 import TeamTable from "../components/TeamTable";
 import sec from "../assets/conferenceData/sec";
+import API from "../util/API";
 
 class ConferencePage extends Component {
-//   componentDidMount() {
-//     console.log(this.props.location);
-//   }
+  state = {
+    teams: [],
+  };
 
-  conferenceInfo = sec
+  componentDidMount() {
+    API.getAllTeams().then((res) => {
+      console.log(res.data);
+      this.setState({ teams: res.data });
+    });
+  }
+
+  conferenceInfo = sec;
 
   teams = sec.teams;
 
@@ -20,22 +28,25 @@ class ConferencePage extends Component {
   );
 
   render() {
+    if (this.state.userID === null) {
+      return null; //Or some other replacement component or markup
+    }
     return (
       <div>
         <h1>{this.conferenceInfo.full_name}</h1>
-        {/* <table>
+        <table>
           <tr>
             <th>Team</th>
             <th>Location</th>
             <th>Colors</th>
             <th>Stadium</th>
           </tr>
-          {this.teams.map((team_entry) => (
+          {this.state.teams.map((team_entry) => (
             <TeamTable team={team_entry} />
           ))}
-        </table> */}
-
-<h2>East Division</h2>
+        </table>
+{/* 
+        <h2>East Division</h2>
         <table>
           <tr>
             <th>Team</th>
@@ -47,7 +58,7 @@ class ConferencePage extends Component {
             <TeamTable team={team_entry} />
           ))}
         </table>
-<h2>West Division</h2>
+        <h2>West Division</h2>
         <table>
           <tr>
             <th>Team</th>
@@ -58,7 +69,7 @@ class ConferencePage extends Component {
           {this.westDivisionTeams.map((team_entry) => (
             <TeamTable team={team_entry} />
           ))}
-        </table>
+        </table> */}
       </div>
     );
   }
