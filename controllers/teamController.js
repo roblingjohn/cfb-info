@@ -10,7 +10,7 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   findBySearchName: function (req, res) {
-    db.Team.findOne({searchname: req.params.searchname})
+    db.Team.findOne({ search_name: req.params.team })
       .then((dbTeams) => res.json(dbTeams))
       .catch((err) => res.status(422).json(err));
   },

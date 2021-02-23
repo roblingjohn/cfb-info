@@ -7,8 +7,8 @@ router
   .post(teamController.create);
 
 router
-  .route("/events/:team")
-  .get(teamController.findById)
+  .route("/teams/:team")
+  .get(teamController.findBySearchName)
   .post(teamController.create);
 //   .get(teamController.findById);
 

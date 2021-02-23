@@ -8,7 +8,7 @@ const Team = new Schema({
     required: "School name required",
   },
   search_name: {
-    type: Date,
+    type: String,
     required: "Search name required",
   },
   nickname: {
